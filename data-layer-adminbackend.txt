@@ -1,0 +1,67 @@
+(function ($) {
+     TBS_dataLayer_OnView(".main_slider .bg_slide", ".main_slider .bg_slide.load", false);
+     TBS_dataLayer_OnView(".gtm-one", ".gtm-one.load", false);
+     TBS_dataLayer_OnView(".contest-module-main-sec", ".contest-module-main-sec.load", false);
+     TBS_dataLayer_OnView("#featured-beer-hub-opp", "#featured-beer-hub-opp .slick-active .featured_img.load", true);
+     TBS_dataLayer_OnView(".gtm-grid-block-slider-two", ".gtm-grid-block-slider-two .slick-active .onsale_box.load", false);
+     TBS_dataLayer_OnView(".beer_sale_slider", ".beer_sale_slider .slick-active .tbs_dt_layer.load", true);
+TBS_dataLayer_OnView(".whats_new", ".whats_new .slick-active .tbs_dt_layer.load", true);
+     TBS_dataLayer_OnView(".gtm-grid-block-slider", ".gtm-grid-block-slider .slick-active .onsale_box.load", false);
+     TBS_dataLayer_OnView(".ordering-online-section", ".ordering-online-section.load", false);
+     TBS_dataLayer_OnView(".social-media-grid", ".social-media-grid.load", false);
+     TBS_dataLayer_OnView(".sponsored-banner-section", ".sponsored-banner-section.load", false);
+     jQuery('.main_slider').on('afterChange', function (event, slick) { TBS_dataLayer_AfterChange(slick, ".main_slider", true); });
+     jQuery('.featured_beer_opportunity #featured-beer-hub-opp').on('afterChange', function (event, slick) { TBS_dataLayer_AfterChange(slick, ".featured_beer_opportunity #featured-beer-hub-opp", true); });
+     jQuery('.whats_new').on('afterChange', function (event, slick) { TBS_dataLayer_AfterChange(slick, ".whats_new", true); });
+     jQuery('.gtm-grid-block-slider-two').on('afterChange', function (event, slick) { TBS_dataLayer_AfterChange(slick, ".gtm-grid-block-slider-two", false); });
+     jQuery('.gtm-grid-block-slider').on('afterChange', function (event, slick) { TBS_dataLayer_AfterChange(slick, ".gtm-grid-block-slider", false); });
+     jQuery('.featured_beer_opportunity #featured_beer_opp_carousel').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".featured_beer_opportunity #featured_beer_opp_carousel"); });
+     jQuery('.whats_new').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".whats_new"); });
+     jQuery('.featured_beer_opportunity #featured-beer-hub-opp').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".featured_beer_opportunity #featured-beer-hub-opp"); });
+    // jQuery('.beer_sale_slider').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".beer_sale_slider"); });
+     jQuery('.gtm-grid-block-slider-two').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".gtm-grid-block-slider-two"); });
+     jQuery('.gtm-grid-block-slider').on('init', function (event, slick) { TBS_dataLayer_Initialize(slick, ".gtm-grid-block-slider"); });
+     var $id = jQuery('.contest-module-main-sec').attr('data-id');
+     var $product = jQuery('.contest-module-main-sec').attr('data-product');
+     var $category = jQuery('.contest-module-main-sec').attr('data-category');
+     var $merchant = jQuery('.contest-module-main-sec').attr('data-merchant');
+     var $position = jQuery('.contest-module-main-sec').attr('data-position');
+     jQuery('.custom_module_btn').attr('data-id', $id);
+     jQuery('.custom_module_btn').attr('data-product', $product);
+     jQuery('.custom_module_btn').attr('data-category', $category);
+     jQuery('.custom_module_btn').attr('data-merchant', $merchant);
+     jQuery('.custom_module_btn').attr('data-position', $position);
+     jQuery('.custom_module_btn').attr('data-click-event', 'summer_contest_click');
+     jQuery('.custom_module_btn').attr('data-section', 'Sponsorship Banner 3');
+     jQuery(document).on('click', '.custom_module_btn', function () { TBS_dataLayer_Click(jQuery(this)); });
+     
+     document.addEventListener( 'wpcf7invalid', function( event ) {
+     if ( '585261' == event.detail.contactFormId ) {
+     if(jQuery('.wpcf7-form').hasClass('invalid')){
+          jQuery('#contest-module-beerhub').removeClass('relaxsummerthankyou');
+          jQuery('#contest-module-beerhub').css('display','none');
+        jQuery('.wpcf7-response-output').css('display','block');
+        jQuery('.disableStore_heading').removeClass('submissionthankyou');
+     }
+     }
+     }, false );
+     document.addEventListener( 'wpcf7mailsent', function( event ) {
+     if ( '585261' == event.detail.contactFormId ) {
+        jQuery('.wpcf7-response-output').css('display','none');
+        jQuery('#contest-module-beerhub').css({ 'display' : 'block','opacity' : '1' });
+        jQuery('body').addClass('contest-module-overlay');
+        jQuery('.disableStore_heading').addClass('submissionthankyou');
+     
+     
+     } 
+     jQuery('#contest-module-beerhub .close_popup_btn ').click(function () {
+          jQuery('body').removeClass('contest-module-overlay');
+          jQuery('#contest-module-beerhub').css({ 'display' : 'none','opacity' : '0' });
+        jQuery('.disableStore_heading').removeClass('submissionthankyou');
+     
+     })
+     
+     
+     }, false );
+     
+     })(jQuery);
